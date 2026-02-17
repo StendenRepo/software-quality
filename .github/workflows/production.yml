@@ -26,7 +26,7 @@ jobs:
           cache: maven
 
       - name: Build jar (skip tests)
-        run: mvn -B -f jabberpoint/pom.xml clean package -DskipTests
+        run: mvn -B -f Jabberpoint/pom.xml clean package -DskipTests
 
       - name: Create tag name
         id: tag
