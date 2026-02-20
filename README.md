@@ -19,6 +19,8 @@ Trigger:
 - `pull_request` naar `develop`
 
 Uitgevoerde stappen:
+- `mvn -B -f Jabberpoint/pom.xml checkstyle:check`
+- Voert de Java linter (Checkstyle) uit
 - `mvn -B -f jabberpoint/pom.xml clean verify`
 - Alle tests worden uitgevoerd
 - De `.jar` wordt gebouwd
