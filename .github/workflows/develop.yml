@@ -21,11 +21,17 @@ jobs:
           java-version: "21"
           cache: maven
 
+      - name: Run Checkstyle (Java Linter)
+        run: mvn -B -f Jabberpoint/pom.xml checkstyle:check
+
       - name: Run Maven Verify
         run: mvn -B -f Jabberpoint/pom.xml clean verify
 
       - name: Upload jar artifact
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: jabberpoint-develop-${{ github.sha }}
           path: Jabberpoint/target/*.jar
+          if-no-files-found: error
+          retention-days: 30
