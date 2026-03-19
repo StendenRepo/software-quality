@@ -70,6 +70,7 @@ public class MenuController extends MenuBar {
 		setHelpMenu(helpMenu);        // nodig for portability (Motif, etc.).
 	}
 
+	//	Invoker
 	private void addCommand(MenuItem item, Command command) {
 		item.addActionListener(e -> command.execute());
 	}
