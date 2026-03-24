@@ -25,6 +25,47 @@ public class Slide {
 		items = new Vector<SlideItem>();
 	}
 
+	private Slide(Builder builder) {
+		this.title = builder.title;
+		this.items = new Vector<SlideItem>(builder.items);
+	}
+
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	public static Builder builder(String title) {
+		return new Builder().title(title);
+	}
+
+	public static final class Builder {
+		private String title;
+		private Vector<SlideItem> items = new Vector<SlideItem>();
+
+		public Builder() {
+		}
+
+		public Builder title(String title) {
+			this.title = title;
+			return this;
+		}
+
+		public Builder addItem(SlideItem item) {
+			this.items.addElement(item);
+			return this;
+		}
+
+		public Builder addText(int level, String message) {
+			this.items.addElement(new TextItem(level, message));
+			return this;
+		}
+
+		public Slide build() {
+			Slide slide = new Slide(this);
+			return slide;
+		}
+	}
+
 	// Voeg een SlideItem toe
 	public void append(SlideItem anItem) {
 		items.addElement(anItem);

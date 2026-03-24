@@ -15,21 +15,41 @@ class DemoPresentation extends Accessor {
 	public void loadFile(Presentation presentation, String unusedFilename) {
 		presentation.setTitle("Demo Presentation");
 		Slide slide;
-		slide = new Slide();
-		slide.setTitle("JabberPoint");
-		slide.append(1, "Het Java Presentatie Tool");
-		slide.append(2, "Copyright (c) 1996-2000: Ian Darwin");
-		slide.append(2, "Copyright (c) 2000-now:");
-		slide.append(2, "Gert Florijn en Sylvia Stuurman");
-		slide.append(4, "JabberPoint aanroepen zonder bestandsnaam");
-		slide.append(4, "laat deze presentatie zien");
-		slide.append(1, "Navigeren:");
-		slide.append(3, "Volgende slide: PgDn of Enter");
-		slide.append(3, "Vorige slide: PgUp of up-arrow");
-		slide.append(3, "Stoppen: q or Q");
+
+		slide = Slide.builder("JabberPoint")
+			.addText(1, "Het Java Presentatie Tool")
+			.addText(2, "Copyright (c) 1996-2000: Ian Darwin")
+			.addText(2, "Copyright (c) 2000-now:")
+			.addText(2, "Gert Florijn en Sylvia Stuurman")
+			.addText(4, "JabberPoint aanroepen zonder bestandsnaam")
+			.addText(4, "laat deze presentatie zien")
+			.addText(1, "Navigeren:")
+			.addText(3, "Volgende slide: PgDn of Enter")
+			.addText(3, "Vorige slide: PgUp of up-arrow")
+			.addText(3, "Stoppen: q or Q")
+			.build();
 		presentation.append(slide);
 
-		slide = new Slide();
+		slide = Slide.builder("Demonstratie van levels en stijlen")
+			.addText(1, "Level 1")
+			.addText(2, "Level 2")
+			.addText(1, "Nogmaals level 1")
+			.addText(1, "Level 1 heeft stijl nummer 1")
+			.addText(2, "Level 2 heeft stijl nummer 2")
+			.addText(3, "Zo ziet level 3 er uit")
+			.addText(4, "En dit is level 4")
+			.build();
+		presentation.append(slide);
+
+		slide = Slide.builder("De derde slide")
+			.addText(1, "Om een nieuwe presentatie te openen,")
+			.addText(2, "gebruik File->Open uit het menu.")
+			.addText(1, " ")
+			.addText(1, "Dit is het einde van de presentatie.")
+			.addItem(new BitmapItem(1, "JabberPoint.jpg"))
+			.build();
+		presentation.append(slide);
+
 		slide.setTitle("Demonstratie van levels en stijlen");
 		slide.append(1, "Level 1");
 		slide.append(2, "Level 2");
