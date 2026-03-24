@@ -32,9 +32,6 @@ public class MenuController extends MenuBar {
 	public static final String SAVEERR = "Save Error";
 	private static final long serialVersionUID = 227L;
 
-	private Frame parent; // het frame, alleen gebruikt als ouder voor de Dialogs
-	private Presentation presentation; // Er worden commando's gegeven aan de presentatie
-
 	public MenuController(Frame frame, Presentation pres) {
 		MenuItem menuItem;
 
