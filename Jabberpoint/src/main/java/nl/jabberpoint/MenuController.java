@@ -1,6 +1,7 @@
 package nl.jabberpoint;
 
 import nl.jabberpoint.commands.*;
+import nl.jabberpoint.memento.PresentationCaretaker;
 
 import java.awt.*;
 
@@ -30,6 +31,8 @@ public class MenuController extends MenuBar {
 	public static final String IOEX = "IO Exception: ";
 	public static final String LOADERR = "Load Error";
 	public static final String SAVEERR = "Save Error";
+	public static final String UNDO = "Undo";
+	public static final String REDO = "Redo";
 	private static final long serialVersionUID = 227L;
 
 	public MenuController(Frame frame, Presentation pres) {
@@ -50,15 +53,24 @@ public class MenuController extends MenuBar {
 
 		add(fileMenu);
 
+		PresentationCaretaker caretaker = new PresentationCaretaker();
 		Menu viewMenu = new Menu(VIEW);
 		viewMenu.add(menuItem = mkMenuItem(NEXT));
-		addCommand(menuItem, new NextSlideCommand(pres));
+		addCommand(menuItem, new NextSlideCommand(pres, caretaker));
 
 		viewMenu.add(menuItem = mkMenuItem(PREV));
-		addCommand(menuItem, new PrevSlideCommand(pres));
+		addCommand(menuItem, new PrevSlideCommand(pres, caretaker));
+
+		viewMenu.add(menuItem = mkMenuItem(UNDO));
+		addCommand(menuItem, new UndoCommand(pres, caretaker));
+
+		viewMenu.add(menuItem = mkMenuItem(REDO));
+		addCommand(menuItem, new RedoCommand(pres, caretaker));
 
 		viewMenu.add(menuItem = mkMenuItem(GOTO));
-		addCommand(menuItem, new GoToCommand(pres, frame));
+		addCommand(menuItem, new GoToCommand(pres,caretaker, frame));
+
+		add(viewMenu);
 
 		Menu helpMenu = new Menu(HELP);
 		helpMenu.add(menuItem = mkMenuItem(ABOUT));
