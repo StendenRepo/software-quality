@@ -23,8 +23,7 @@ class DemoPresentation extends Accessor {
 			.addText(2, "Gert Florijn en Sylvia Stuurman")
 			.addText(4, "JabberPoint aanroepen zonder bestandsnaam")
 			.addText(4, "laat deze presentatie zien")
-			.addText(1, "Navigeren:")
-			.addText(3, "Volgende slide: PgDn of Enter")
+			.addText(1, "Navigeren:").addText(3, "Volgende slide: PgDn of Enter")
 			.addText(3, "Vorige slide: PgUp of up-arrow")
 			.addText(3, "Stoppen: q or Q")
 			.build();
