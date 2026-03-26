@@ -62,9 +62,49 @@ public class XMLAccessor extends Accessor {
 
 	public void loadFile(Presentation presentation, String filename) throws IOException {
 		int slideNumber, itemNumber, max = 0, maxItems = 0;
+		java.io.InputStream inputStream = null;
 		try {
-			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-			Document document = builder.parse(new File(filename)); // maak een JDOM document
+			java.io.File xmlFile = new java.io.File(filename);
+			if (xmlFile.exists()) {
+				inputStream = new java.io.FileInputStream(xmlFile);
+			} else {
+				inputStream = getClass().getClassLoader().getResourceAsStream(filename);
+				if (inputStream == null) {
+					throw new IOException("File not found: " + filename);
+				}
+			}
+
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			factory.setValidating(false);
+			factory.setNamespaceAware(true);
+			try {
+				factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+			} catch (Exception ignored) {
+			}
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			builder.setEntityResolver((publicId, systemId) -> {
+				if (systemId != null && systemId.endsWith("jabberpoint.dtd")) {
+					java.io.InputStream dtdStream = getClass().getClassLoader().getResourceAsStream("jabberpoint.dtd");
+					if (dtdStream != null) {
+						org.xml.sax.InputSource dtdSource = new org.xml.sax.InputSource(dtdStream);
+						dtdSource.setSystemId(getClass().getClassLoader().getResource("jabberpoint.dtd").toExternalForm());
+						return dtdSource;
+					}
+				}
+				return null;
+			});
+
+			org.xml.sax.InputSource xmlSource = new org.xml.sax.InputSource(inputStream);
+			if (xmlFile.exists()) {
+				xmlSource.setSystemId(xmlFile.toURI().toString());
+			} else {
+				java.net.URL resUrl = getClass().getClassLoader().getResource(filename);
+				if (resUrl != null) {
+					xmlSource.setSystemId(resUrl.toExternalForm());
+				}
+			}
+
+			Document document = builder.parse(xmlSource); // maak een JDOM document
 			Element doc = document.getDocumentElement();
 			presentation.setTitle(getTitle(doc, SHOWTITLE));
 
@@ -85,13 +125,21 @@ public class XMLAccessor extends Accessor {
 			}
 		}
 		catch (IOException iox) {
-			System.err.println(iox.toString());
+			throw iox;
 		}
 		catch (SAXException sax) {
-			System.err.println(sax.getMessage());
+			throw new IOException(sax);
 		}
 		catch (ParserConfigurationException pcx) {
-			System.err.println(PCE);
+			throw new IOException(PCE);
+		}
+		finally {
+			if (inputStream != null) {
+				try {
+					inputStream.close();
+				} catch (IOException ignored) {
+				}
+			}
 		}
 	}
 

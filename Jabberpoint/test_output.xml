@@ -4,5 +4,6 @@
 <showtitle>Test Presentation</showtitle>
 <slide>
 <title>Test Slide</title>
+<item kind="text" level="1">Test text</item>
 </slide>
 </presentation>

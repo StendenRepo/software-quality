@@ -42,11 +42,10 @@ public class BitmapItemTest {
         BufferedImage img = new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB);
         Graphics g = img.getGraphics();
 
-        // This might throw NPE because bufferedImage is null
-        // In real usage, we'd have a valid image
-        assertThrows(NullPointerException.class, () -> {
-            item.getBoundingBox(g, null, 1.0f, style);
-        });
+        Rectangle box = item.getBoundingBox(g, null, 1.0f, style);
+        assertNotNull(box);
+        assertEquals(0, box.width);
+        assertEquals(0, box.height);
     }
 
     @Test
@@ -56,10 +55,7 @@ public class BitmapItemTest {
         BufferedImage img = new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB);
         Graphics g = img.getGraphics();
 
-        // This might throw NPE
-        assertThrows(NullPointerException.class, () -> {
-            item.draw(0, 0, 1.0f, g, style, null);
-        });
+        assertDoesNotThrow(() -> item.draw(0, 0, 1.0f, g, style, null));
     }
 
     @Test

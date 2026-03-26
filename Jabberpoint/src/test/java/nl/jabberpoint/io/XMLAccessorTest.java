@@ -12,8 +12,10 @@ public class XMLAccessorTest {
         Presentation presentation = new Presentation();
         XMLAccessor accessor = new XMLAccessor();
 
-        // Load the test.xml file
-        accessor.loadFile(presentation, "test.xml");
+        java.net.URL resource = getClass().getClassLoader().getResource("test.xml");
+        assertNotNull(resource, "test.xml resource not found in classpath");
+
+        accessor.loadFile(presentation, resource.getFile());
 
         assertNotNull(presentation.getTitle());
         assertTrue(presentation.getSize() > 0);

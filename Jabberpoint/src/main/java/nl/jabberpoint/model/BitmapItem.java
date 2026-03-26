@@ -33,17 +33,42 @@ public class BitmapItem extends SlideItem {
 	public BitmapItem(int level, String name) {
 		super(level);
 		imageName = name;
-		try {
-			bufferedImage = ImageIO.read(new File(imageName));
-		}
-		catch (IOException e) {
-			System.err.println(FILE + imageName + NOTFOUND) ;
+		if (name != null) {
+			try {
+				bufferedImage = ImageIO.read(new File(name));
+			} catch (IOException e) {
+				System.err.println(FILE + name + NOTFOUND);
+			}
+		} else {
+			bufferedImage = null;
 		}
 	}
 
 // Een leeg bitmap-item
 	public BitmapItem() {
 		this(0, null);
+	}
+
+	@Override
+	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
+		if (bufferedImage == null) {
+			return new Rectangle((int) (myStyle.indent * scale), 0, 0, 0);
+		}
+		return new Rectangle((int) (myStyle.indent * scale), 0,
+				(int) (bufferedImage.getWidth(observer) * scale),
+				((int) (myStyle.leading * scale)) +
+				(int) (bufferedImage.getHeight(observer) * scale));
+	}
+
+	@Override
+	public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer) {
+		if (bufferedImage == null) {
+			return;
+		}
+		int width = x + (int) (myStyle.indent * scale);
+		int height = y + (int) (myStyle.leading * scale);
+		g.drawImage(bufferedImage, width, height, (int) (bufferedImage.getWidth(observer) * scale),
+				(int) (bufferedImage.getHeight(observer) * scale), observer);
 	}
 
 // geef de bestandsnaam van de afbeelding

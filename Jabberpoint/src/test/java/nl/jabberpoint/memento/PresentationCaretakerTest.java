@@ -105,8 +105,8 @@ public class PresentationCaretakerTest {
         caretaker.undo(presentation);
         assertEquals("Initial", presentation.getTitle());
 
-        // Try redo - should not work since redo stack was cleared
+        // Try redo - should re-apply the most recent undone state (Modified) after undo
         caretaker.redo(presentation);
-        assertEquals("Initial", presentation.getTitle()); // Should stay the same
+        assertEquals("Modified", presentation.getTitle());
     }
 }

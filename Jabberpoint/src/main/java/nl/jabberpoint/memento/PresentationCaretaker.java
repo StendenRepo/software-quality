@@ -14,16 +14,56 @@ public class PresentationCaretaker {
     }
 
     public void undo(Presentation presentation) {
-        if (!undoStack.isEmpty()) {
-            redoStack.push(presentation.save());
+        if (undoStack.isEmpty()) {
+            return;
+        }
+
+        boolean matchesTop = isCurrentStateEqualTopMemento(presentation);
+        redoStack.push(presentation.save());
+
+        if (matchesTop) {
+            undoStack.pop();
+            if (!undoStack.isEmpty()) {
+                presentation.restore(undoStack.peek());
+            }
+        } else {
+            // Restore the top of the undo stack.
             presentation.restore(undoStack.pop());
         }
     }
 
     public void redo(Presentation presentation) {
-        if (!redoStack.isEmpty()) {
-            undoStack.push(presentation.save());
-            presentation.restore(redoStack.pop());
+        if (redoStack.isEmpty()) {
+            return;
         }
+
+        undoStack.push(presentation.save());
+        presentation.restore(redoStack.pop());
+    }
+
+    private boolean isCurrentStateEqualTopMemento(Presentation presentation) {
+        if (undoStack.isEmpty()) {
+            return false;
+        }
+
+        PresentationMemento top = undoStack.peek();
+        if (top == null) {
+            return false;
+        }
+
+        String title = presentation.getTitle();
+        if (title == null) {
+            if (top.getShowTitle() != null) {
+                return false;
+            }
+        } else if (!title.equals(top.getShowTitle())) {
+            return false;
+        }
+
+        if (presentation.getSize() != top.getShowList().size()) {
+            return false;
+        }
+
+        return presentation.getSlideNumber() == top.getCurrentSlideNumber();
     }
 }
