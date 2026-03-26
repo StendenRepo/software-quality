@@ -1,4 +1,4 @@
-package nl.jabberpoint;
+package nl.jabberpoint.model;
 
 import java.awt.Rectangle;
 import java.awt.Graphics;
@@ -28,7 +28,7 @@ import java.util.ArrayList;
 
 public class TextItem extends SlideItem {
 	private String text;
-	
+
 	private static final String EMPTYTEXT = "No Text Given";
 
 // een textitem van level level, met als tekst string
@@ -55,7 +55,7 @@ public class TextItem extends SlideItem {
 	}
 
 // geef de bounding box van het item
-	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, 
+	public Rectangle getBoundingBox(Graphics g, ImageObserver observer,
 			float scale, Style myStyle) {
 		List<TextLayout> layouts = getLayouts(g, myStyle, scale);
 		int xsize = 0, ysize = (int) (myStyle.leading * scale);
@@ -75,13 +75,13 @@ public class TextItem extends SlideItem {
 	}
 
 // teken het item
-	public void draw(int x, int y, float scale, Graphics g, 
+	public void draw(int x, int y, float scale, Graphics g,
 			Style myStyle, ImageObserver o) {
 		if (text == null || text.length() == 0) {
 			return;
 		}
 		List<TextLayout> layouts = getLayouts(g, myStyle, scale);
-		Point pen = new Point(x + (int)(myStyle.indent * scale), 
+		Point pen = new Point(x + (int)(myStyle.indent * scale),
 				y + (int) (myStyle.leading * scale));
 		Graphics2D g2d = (Graphics2D)g;
 		g2d.setColor(myStyle.color);

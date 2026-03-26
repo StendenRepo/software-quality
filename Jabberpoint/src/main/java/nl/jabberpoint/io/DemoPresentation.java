@@ -1,4 +1,8 @@
-package nl.jabberpoint;
+package nl.jabberpoint.io;
+
+import nl.jabberpoint.model.Presentation;
+import nl.jabberpoint.model.Slide;
+import nl.jabberpoint.model.BitmapItem;
 
 /** Een ingebouwde demo-presentatie
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman

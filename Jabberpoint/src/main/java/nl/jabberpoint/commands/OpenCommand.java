@@ -1,9 +1,9 @@
 package nl.jabberpoint.commands;
 
-import nl.jabberpoint.Accessor;
-import nl.jabberpoint.MenuController;
-import nl.jabberpoint.Presentation;
-import nl.jabberpoint.XMLAccessor;
+import nl.jabberpoint.io.Accessor;
+import nl.jabberpoint.controller.MenuController;
+import nl.jabberpoint.model.Presentation;
+import nl.jabberpoint.io.XMLAccessor;
 
 import javax.swing.*;
 import java.awt.*;

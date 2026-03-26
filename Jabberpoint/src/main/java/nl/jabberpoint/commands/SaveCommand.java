@@ -1,14 +1,14 @@
 package nl.jabberpoint.commands;
 
-import nl.jabberpoint.Accessor;
-import nl.jabberpoint.Presentation;
-import nl.jabberpoint.XMLAccessor;
+import nl.jabberpoint.io.Accessor;
+import nl.jabberpoint.model.Presentation;
+import nl.jabberpoint.io.XMLAccessor;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
-import static nl.jabberpoint.MenuController.*;
+import static nl.jabberpoint.controller.MenuController.*;
 
 public class SaveCommand implements Command {
     private final Presentation presentation;

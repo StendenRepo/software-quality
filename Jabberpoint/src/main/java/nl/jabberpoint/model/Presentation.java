@@ -1,6 +1,7 @@
-package nl.jabberpoint;
+package nl.jabberpoint.model;
 
 import nl.jabberpoint.memento.PresentationMemento;
+import nl.jabberpoint.view.SlideViewerComponent;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,6 @@
 package nl.jabberpoint.memento;
 
-import nl.jabberpoint.Presentation;
+import nl.jabberpoint.model.Presentation;
 
 import java.util.Stack;
 

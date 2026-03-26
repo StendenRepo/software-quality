@@ -1,4 +1,4 @@
-package nl.jabberpoint;
+package nl.jabberpoint.model;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -18,7 +18,7 @@ import java.awt.Font;
 
 public class Style {
 	private static Style[] styles; // de styles
-	
+
 	private static final String FONTNAME = "Helvetica";
 	int indent;
 	Color color;
@@ -27,7 +27,7 @@ public class Style {
 	int leading;
 
 	public static void createStyles() {
-		styles = new Style[5];    
+		styles = new Style[5];
 		// De styles zijn vast ingecodeerd.
 		styles[0] = new Style(0, Color.red,   48, 20);	// style voor item-level 0
 		styles[1] = new Style(20, Color.blue,  40, 10);	// style voor item-level 1

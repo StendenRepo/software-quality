@@ -1,6 +1,6 @@
 package nl.jabberpoint.memento;
 
-import nl.jabberpoint.Slide;
+import nl.jabberpoint.model.Slide;
 
 import java.util.ArrayList;
 

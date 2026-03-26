@@ -1,7 +1,10 @@
-package nl.jabberpoint;
+package nl.jabberpoint.controller;
 
 import nl.jabberpoint.commands.*;
 import nl.jabberpoint.memento.PresentationCaretaker;
+
+import nl.jabberpoint.model.Presentation;
+import nl.jabberpoint.view.AboutBox;
 
 import java.awt.*;
 

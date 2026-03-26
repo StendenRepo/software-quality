@@ -1,4 +1,4 @@
-package nl.jabberpoint;
+package nl.jabberpoint.model;
 
 import java.awt.Rectangle;
 import java.awt.Graphics;
@@ -25,7 +25,7 @@ import java.io.IOException;
 public class BitmapItem extends SlideItem {
   private BufferedImage bufferedImage;
   private String imageName;
-  
+
   protected static final String FILE = "Bestand ";
   protected static final String NOTFOUND = " niet gevonden";
 
@@ -55,7 +55,7 @@ public class BitmapItem extends SlideItem {
 	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
 		return new Rectangle((int) (myStyle.indent * scale), 0,
 				(int) (bufferedImage.getWidth(observer) * scale),
-				((int) (myStyle.leading * scale)) + 
+				((int) (myStyle.leading * scale)) +
 				(int) (bufferedImage.getHeight(observer) * scale));
 	}
 

@@ -1,6 +1,6 @@
 package nl.jabberpoint.commands;
 
-import nl.jabberpoint.Presentation;
+import nl.jabberpoint.model.Presentation;
 
 import java.awt.*;
 

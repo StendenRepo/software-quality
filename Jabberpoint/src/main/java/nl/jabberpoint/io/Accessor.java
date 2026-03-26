@@ -1,6 +1,7 @@
-package nl.jabberpoint;
+package nl.jabberpoint.io;
 
 import java.io.IOException;
+import nl.jabberpoint.model.Presentation;
 
 /**
  * <p>Een Accessor maakt het mogelijk om gegevens voor een presentatie

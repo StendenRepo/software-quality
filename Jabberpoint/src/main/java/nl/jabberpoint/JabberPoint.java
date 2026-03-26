@@ -4,6 +4,12 @@ import javax.swing.JOptionPane;
 
 import java.io.IOException;
 
+import nl.jabberpoint.model.Presentation;
+import nl.jabberpoint.model.Style;
+import nl.jabberpoint.view.SlideViewerFrame;
+import nl.jabberpoint.io.Accessor;
+import nl.jabberpoint.io.XMLAccessor;
+
 /** JabberPoint Main Programma
  * <p>This program is distributed under the terms of the accompanying
  * COPYRIGHT.txt file (which is NOT the GNU General Public License).
@@ -25,7 +31,7 @@ public class JabberPoint {
 
 	/** Het Main Programma */
 	public static void main(String argv[]) {
-		
+
 		Style.createStyles();
 		Presentation presentation = new Presentation();
 		new SlideViewerFrame(JABVERSION, presentation);
