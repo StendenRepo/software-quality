@@ -8,6 +8,8 @@ nl/jabberpoint/JabberPoint.class
 nl/jabberpoint/model/Presentation.class
 nl/jabberpoint/commands/SaveCommand.class
 nl/jabberpoint/model/TextItem.class
+nl/jabberpoint/constants/MessageConstants.class
+nl/jabberpoint/constants/UIConstants.class
 nl/jabberpoint/memento/PresentationMemento.class
 nl/jabberpoint/model/BitmapItem.class
 nl/jabberpoint/commands/AboutCommand.class
@@ -20,6 +22,7 @@ nl/jabberpoint/commands/Command.class
 nl/jabberpoint/io/XMLAccessor.class
 nl/jabberpoint/view/SlideViewerComponent.class
 nl/jabberpoint/commands/GoToCommand.class
+nl/jabberpoint/constants/FileIOConstants.class
 nl/jabberpoint/controller/MenuController.class
 nl/jabberpoint/commands/ExitCommand.class
 nl/jabberpoint/io/Accessor.class

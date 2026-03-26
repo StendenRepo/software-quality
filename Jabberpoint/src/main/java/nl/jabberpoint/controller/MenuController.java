@@ -5,6 +5,9 @@ import nl.jabberpoint.memento.PresentationCaretaker;
 
 import nl.jabberpoint.model.Presentation;
 import nl.jabberpoint.view.AboutBox;
+import nl.jabberpoint.constants.UIConstants;
+import nl.jabberpoint.constants.FileIOConstants;
+import nl.jabberpoint.constants.MessageConstants;
 
 import java.awt.*;
 
@@ -16,67 +19,47 @@ import java.awt.*;
  */
 public class MenuController extends MenuBar {
 
-	//	Vraag of dit public moet of private en dan mee geven aan addcommand?
-	public static final String ABOUT = "About";
-	public static final String FILE = "File";
-	public static final String EXIT = "Exit";
-	public static final String GOTO = "Go to";
-	public static final String HELP = "Help";
-	public static final String NEW = "New";
-	public static final String NEXT = "Next";
-	public static final String OPEN = "Open";
-	public static final String PAGENR = "Page number?";
-	public static final String PREV = "Prev";
-	public static final String SAVE = "Save";
-	public static final String VIEW = "View";
-	public static final String TESTFILE = "test.xml";
-	public static final String SAVEFILE = "dump.xml";
-	public static final String IOEX = "IO Exception: ";
-	public static final String LOADERR = "Load Error";
-	public static final String SAVEERR = "Save Error";
-	public static final String UNDO = "Undo";
-	public static final String REDO = "Redo";
 	private static final long serialVersionUID = 227L;
 
 	public MenuController(Frame frame, Presentation pres) {
 		MenuItem menuItem;
 
-		Menu fileMenu = new Menu(FILE);
-		fileMenu.add(menuItem = mkMenuItem(OPEN));
+		Menu fileMenu = new Menu(UIConstants.FILE);
+		fileMenu.add(menuItem = mkMenuItem(UIConstants.OPEN));
 		addCommand(menuItem, new OpenCommand(pres, frame));
-		fileMenu.add(menuItem = mkMenuItem(NEW));
+		fileMenu.add(menuItem = mkMenuItem(UIConstants.NEW));
 		addCommand(menuItem, new NewCommand(pres, frame));
-		fileMenu.add(menuItem = mkMenuItem(SAVE));
+		fileMenu.add(menuItem = mkMenuItem(UIConstants.SAVE));
 		addCommand(menuItem, new SaveCommand(pres, frame));
 
 		fileMenu.addSeparator();
 
-		fileMenu.add(menuItem = mkMenuItem(EXIT));
+		fileMenu.add(menuItem = mkMenuItem(UIConstants.EXIT));
 		addCommand(menuItem, new ExitCommand(pres));
 
 		add(fileMenu);
 
 		PresentationCaretaker caretaker = new PresentationCaretaker();
-		Menu viewMenu = new Menu(VIEW);
-		viewMenu.add(menuItem = mkMenuItem(NEXT));
+		Menu viewMenu = new Menu(UIConstants.VIEW);
+		viewMenu.add(menuItem = mkMenuItem(UIConstants.NEXT));
 		addCommand(menuItem, new NextSlideCommand(pres, caretaker));
 
-		viewMenu.add(menuItem = mkMenuItem(PREV));
+		viewMenu.add(menuItem = mkMenuItem(UIConstants.PREV));
 		addCommand(menuItem, new PrevSlideCommand(pres, caretaker));
 
-		viewMenu.add(menuItem = mkMenuItem(UNDO));
+		viewMenu.add(menuItem = mkMenuItem(UIConstants.UNDO));
 		addCommand(menuItem, new UndoCommand(pres, caretaker));
 
-		viewMenu.add(menuItem = mkMenuItem(REDO));
+		viewMenu.add(menuItem = mkMenuItem(UIConstants.REDO));
 		addCommand(menuItem, new RedoCommand(pres, caretaker));
 
-		viewMenu.add(menuItem = mkMenuItem(GOTO));
+		viewMenu.add(menuItem = mkMenuItem(UIConstants.GOTO));
 		addCommand(menuItem, new GoToCommand(pres,caretaker, frame));
 
 		add(viewMenu);
 
-		Menu helpMenu = new Menu(HELP);
-		helpMenu.add(menuItem = mkMenuItem(ABOUT));
+		Menu helpMenu = new Menu(UIConstants.HELP);
+		helpMenu.add(menuItem = mkMenuItem(UIConstants.ABOUT));
 		addCommand(menuItem, new AboutCommand(frame));
 
 		setHelpMenu(helpMenu);        // nodig for portability (Motif, etc.).

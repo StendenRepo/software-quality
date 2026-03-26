@@ -10,6 +10,9 @@
 /Users/cedricsmit/Desktop/software-quality/Jabberpoint/src/main/java/nl/jabberpoint/commands/RedoCommand.java
 /Users/cedricsmit/Desktop/software-quality/Jabberpoint/src/main/java/nl/jabberpoint/commands/SaveCommand.java
 /Users/cedricsmit/Desktop/software-quality/Jabberpoint/src/main/java/nl/jabberpoint/commands/UndoCommand.java
+/Users/cedricsmit/Desktop/software-quality/Jabberpoint/src/main/java/nl/jabberpoint/constants/FileIOConstants.java
+/Users/cedricsmit/Desktop/software-quality/Jabberpoint/src/main/java/nl/jabberpoint/constants/MessageConstants.java
+/Users/cedricsmit/Desktop/software-quality/Jabberpoint/src/main/java/nl/jabberpoint/constants/UIConstants.java
 /Users/cedricsmit/Desktop/software-quality/Jabberpoint/src/main/java/nl/jabberpoint/controller/KeyController.java
 /Users/cedricsmit/Desktop/software-quality/Jabberpoint/src/main/java/nl/jabberpoint/controller/MenuController.java
 /Users/cedricsmit/Desktop/software-quality/Jabberpoint/src/main/java/nl/jabberpoint/io/Accessor.java

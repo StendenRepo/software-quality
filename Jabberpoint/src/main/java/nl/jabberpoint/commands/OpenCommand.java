@@ -1,9 +1,10 @@
 package nl.jabberpoint.commands;
 
 import nl.jabberpoint.io.Accessor;
-import nl.jabberpoint.controller.MenuController;
 import nl.jabberpoint.model.Presentation;
 import nl.jabberpoint.io.XMLAccessor;
+import nl.jabberpoint.constants.FileIOConstants;
+import nl.jabberpoint.constants.MessageConstants;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,12 +24,12 @@ public class OpenCommand implements Command {
         presentation.clear();
         Accessor xmlAccessor = new XMLAccessor();
         try {
-            xmlAccessor.loadFile(presentation, MenuController.TESTFILE);
+            xmlAccessor.loadFile(presentation, FileIOConstants.TESTFILE);
             presentation.setSlideNumber(0);
         } catch (IOException exception) {
             JOptionPane.showMessageDialog(parent,
-                    MenuController.IOEX + exception,
-                    MenuController.LOADERR,
+                    MessageConstants.IOEX + exception,
+                    MessageConstants.LOADERR,
                     JOptionPane.ERROR_MESSAGE);
         }
         parent.repaint();
