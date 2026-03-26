@@ -23,14 +23,16 @@
     <junit.jupiter.version>5.10.2</junit.jupiter.version>
     <maven.surefire.version>3.2.5</maven.surefire.version>
     <maven.jar.version>3.3.0</maven.jar.version>
+    <jacoco.version>0.8.11</jacoco.version>
+    <mockito.version>5.10.0</mockito.version>
   </properties>
 
   <dependencies>
     <!-- JUnit 5 (API + engine) -->
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter</artifactId>
-      <version>${junit.jupiter.version}</version>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>${mockito.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -72,7 +74,30 @@
         <version>${maven.surefire.version}</version>
         <configuration>
           <useModulePath>false</useModulePath>
+          <argLine>${argLine}</argLine>
         </configuration>
+      </plugin>
+
+      <!-- JaCoCo voor test coverage -->
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>${jacoco.version}</version>
+        <executions>
+          <execution>
+            <id>default-prepare-agent</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>default-report</id>
+            <phase>test</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
 
       <!-- Maak een executable jar met Main-Class in manifest -->
