@@ -3,7 +3,6 @@ package nl.jabberpoint.commands;
 import nl.jabberpoint.model.Presentation;
 import nl.jabberpoint.model.Slide;
 import org.junit.jupiter.api.Test;
-import java.awt.Frame;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class NewCommandTest {
@@ -16,21 +15,12 @@ public class NewCommandTest {
         presentation.setTitle("Test Title");
         presentation.setSlideNumber(0);
 
-        Frame mockFrame = new MockFrame();
-        NewCommand command = new NewCommand(presentation, mockFrame);
+        NewCommand command = new NewCommand(presentation, null);
 
         command.execute();
 
         assertEquals(0, presentation.getSize());
         assertNull(presentation.getTitle());
         assertEquals(-1, presentation.getSlideNumber());
-    }
-
-    // Mock Frame class
-    private static class MockFrame extends Frame {
-        @Override
-        public void repaint() {
-            // Mock implementation
-        }
     }
 }

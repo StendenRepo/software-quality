@@ -1,17 +1,20 @@
 package nl.jabberpoint.commands;
 
 import org.junit.jupiter.api.Test;
-import java.awt.Frame;
+import java.awt.GraphicsEnvironment;
+import java.awt.HeadlessException;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AboutCommandTest {
 
     @Test
     public void testExecute() {
-        Frame mockFrame = new Frame();
-        AboutCommand command = new AboutCommand(mockFrame);
+        AboutCommand command = new AboutCommand(null);
 
-        // Should not throw exception
-        assertDoesNotThrow(() -> command.execute());
+        if (GraphicsEnvironment.isHeadless()) {
+            assertThrows(HeadlessException.class, command::execute);
+        } else {
+            assertDoesNotThrow(command::execute);
+        }
     }
 }

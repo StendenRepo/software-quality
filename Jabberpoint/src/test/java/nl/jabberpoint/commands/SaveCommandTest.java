@@ -3,7 +3,6 @@ package nl.jabberpoint.commands;
 import nl.jabberpoint.model.Presentation;
 import nl.jabberpoint.model.Slide;
 import org.junit.jupiter.api.Test;
-import java.awt.Frame;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SaveCommandTest {
@@ -15,8 +14,7 @@ public class SaveCommandTest {
         presentation.append(slide);
         presentation.setTitle("Test Presentation");
 
-        Frame mockFrame = new Frame();
-        SaveCommand command = new SaveCommand(presentation, mockFrame);
+        SaveCommand command = new SaveCommand(presentation, null);
 
         // Should save without throwing exception
         assertDoesNotThrow(() -> command.execute());

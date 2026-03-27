@@ -32,6 +32,8 @@ public class OpenCommand implements Command {
                     MessageConstants.LOADERR,
                     JOptionPane.ERROR_MESSAGE);
         }
-        parent.repaint();
+        if (parent != null) {
+            parent.repaint();
+        }
     }
 }

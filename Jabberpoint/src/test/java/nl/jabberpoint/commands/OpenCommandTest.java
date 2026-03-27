@@ -2,7 +2,6 @@ package nl.jabberpoint.commands;
 
 import nl.jabberpoint.model.Presentation;
 import org.junit.jupiter.api.Test;
-import java.awt.Frame;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class OpenCommandTest {
@@ -10,8 +9,7 @@ public class OpenCommandTest {
     @Test
     public void testExecute() {
         Presentation presentation = new Presentation();
-        Frame mockFrame = new Frame();
-        OpenCommand command = new OpenCommand(presentation, mockFrame);
+        OpenCommand command = new OpenCommand(presentation, null);
 
         // Should load the test file without throwing exception
         assertDoesNotThrow(() -> command.execute());
