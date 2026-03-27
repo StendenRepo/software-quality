@@ -26,4 +26,4 @@ jobs:
           cache: maven
 
       - name: Run Maven Tests
-        run: mvn -B -f Jabberpoint/pom.xml test
+        run: mvn -B -Djava.awt.headless=true -f Jabberpoint/pom.xml test
