@@ -12,10 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
-
-    env:
-      MAVEN_OPTS: -Djava.awt.headless=true
+        os: [ubuntu-latest, macos-latest]
 
     steps:
       - name: Checkout repository
