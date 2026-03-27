@@ -28,4 +28,4 @@ jobs:
           cache: maven
 
       - name: Run Maven Tests
-        run: mvn -B test
+        run: mvn -B test -Djava.awt.headless=true
