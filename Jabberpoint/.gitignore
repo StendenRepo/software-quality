@@ -1,0 +1,17 @@
+# Maven build output
+/target/
+
+# IDEA
+*.iml
+.idea/
+
+# jacoco coverage reports
+jacoco.exec
+**/jacoco.exec
+**/jacoco-report/
+**/jacoco/**
+
+# temporary files
+*.log
+*.lst
+
