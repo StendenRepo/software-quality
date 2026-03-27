@@ -1,15 +1,14 @@
 package nl.jabberpoint.io;
 
+import java.io.*;
+import java.net.URL;
 import java.util.Vector;
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.FileWriter;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -62,11 +61,11 @@ public class XMLAccessor extends Accessor {
 
 	public void loadFile(Presentation presentation, String filename) throws IOException {
 		int slideNumber, itemNumber, max = 0, maxItems = 0;
-		java.io.InputStream inputStream = null;
+		InputStream inputStream = null;
 		try {
-			java.io.File xmlFile = new java.io.File(filename);
+			File xmlFile = new File(filename);
 			if (xmlFile.exists()) {
-				inputStream = new java.io.FileInputStream(xmlFile);
+				inputStream = new FileInputStream(xmlFile);
 			} else {
 				inputStream = getClass().getClassLoader().getResourceAsStream(filename);
 				if (inputStream == null) {
@@ -86,7 +85,7 @@ public class XMLAccessor extends Accessor {
 				if (systemId != null && systemId.endsWith("jabberpoint.dtd")) {
 					java.io.InputStream dtdStream = getClass().getClassLoader().getResourceAsStream("jabberpoint.dtd");
 					if (dtdStream != null) {
-						org.xml.sax.InputSource dtdSource = new org.xml.sax.InputSource(dtdStream);
+						InputSource dtdSource = new InputSource(dtdStream);
 						dtdSource.setSystemId(getClass().getClassLoader().getResource("jabberpoint.dtd").toExternalForm());
 						return dtdSource;
 					}
@@ -94,11 +93,11 @@ public class XMLAccessor extends Accessor {
 				return null;
 			});
 
-			org.xml.sax.InputSource xmlSource = new org.xml.sax.InputSource(inputStream);
+			InputSource xmlSource = new InputSource(inputStream);
 			if (xmlFile.exists()) {
 				xmlSource.setSystemId(xmlFile.toURI().toString());
 			} else {
-				java.net.URL resUrl = getClass().getClassLoader().getResource(filename);
+				URL resUrl = getClass().getClassLoader().getResource(filename);
 				if (resUrl != null) {
 					xmlSource.setSystemId(resUrl.toExternalForm());
 				}

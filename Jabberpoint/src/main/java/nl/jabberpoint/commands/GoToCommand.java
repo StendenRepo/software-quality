@@ -32,7 +32,7 @@ public class GoToCommand implements Command {
 
                     // Alleen opslaan als de slide echt verandert
                     if (newIndex != presentation.getSlideNumber()) {
-                        caretaker.saveState(presentation); // 🔥 memento opslaan
+                        caretaker.saveState(presentation);
                         presentation.setSlideNumber(newIndex);
                     }
 
