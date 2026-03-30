@@ -80,7 +80,7 @@
         <version>${maven.surefire.version}</version>
         <configuration>
           <useModulePath>false</useModulePath>
-          <argLine>${argLine}</argLine>
+          <argLine>-XX:+EnableDynamicAgentLoading -Xshare:off ${argLine}</argLine>
         </configuration>
       </plugin>
 
@@ -95,6 +95,13 @@
             <goals>
               <goal>prepare-agent</goal>
             </goals>
+            <configuration>
+              <excludes>
+                <exclude>sun/**</exclude>
+                <exclude>com/sun/**</exclude>
+                <exclude>jdk/**</exclude>
+              </excludes>
+            </configuration>
           </execution>
           <execution>
             <id>default-report</id>
