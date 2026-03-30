@@ -52,7 +52,7 @@
         <configuration>
           <configLocation>google_checks.xml</configLocation>
           <consoleOutput>true</consoleOutput>
-          <failsOnError>true</failsOnError>
+          <failOnViolation>true</failOnViolation>
         </configuration>
         <executions>
           <execution>
@@ -95,6 +95,13 @@
             <goals>
               <goal>prepare-agent</goal>
             </goals>
+            <configuration>
+              <excludes>
+                <exclude>sun/**</exclude>
+                <exclude>com/sun/**</exclude>
+                <exclude>jdk/**</exclude>
+              </excludes>
+            </configuration>
           </execution>
           <execution>
             <id>default-report</id>

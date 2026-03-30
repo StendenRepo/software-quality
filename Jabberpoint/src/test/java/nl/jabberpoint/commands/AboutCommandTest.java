@@ -1,20 +1,22 @@
 package nl.jabberpoint.commands;
 
+import nl.jabberpoint.view.AboutBox;
 import org.junit.jupiter.api.Test;
-import java.awt.GraphicsEnvironment;
-import java.awt.HeadlessException;
-import static org.junit.jupiter.api.Assertions.*;
+import org.mockito.MockedStatic;
+import org.mockito.Mockito;
+
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class AboutCommandTest {
 
     @Test
     public void testExecute() {
-        AboutCommand command = new AboutCommand(null);
+        try (MockedStatic<AboutBox> mockedAboutBox = Mockito.mockStatic(AboutBox.class)) {
+            AboutCommand command = new AboutCommand(null);
 
-        if (GraphicsEnvironment.isHeadless()) {
-            assertThrows(HeadlessException.class, command::execute);
-        } else {
             assertDoesNotThrow(command::execute);
+
+            mockedAboutBox.verify(() -> AboutBox.show(null));
         }
     }
 }
