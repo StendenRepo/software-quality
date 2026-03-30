@@ -52,7 +52,7 @@
         <configuration>
           <configLocation>google_checks.xml</configLocation>
           <consoleOutput>true</consoleOutput>
-          <failsOnError>true</failsOnError>
+          <failOnViolation>true</failOnViolation>
         </configuration>
         <executions>
           <execution>
@@ -80,7 +80,7 @@
         <version>${maven.surefire.version}</version>
         <configuration>
           <useModulePath>false</useModulePath>
-          <argLine>-XX:+EnableDynamicAgentLoading -Xshare:off ${argLine}</argLine>
+          <argLine>${argLine}</argLine>
         </configuration>
       </plugin>
 
