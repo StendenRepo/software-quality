@@ -62,7 +62,7 @@ Trigger:
 Uitgevoerde stappen:
 - Tests worden uitgevoerd op:
   - Ubuntu (Linux)
-  - Windows
+  - Mac OS
 - Gebruik van een **matrix strategy**
 - Workflow faalt als één platform faalt
 
